@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Hidden from '@material-ui/core/Hidden';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const drawerWidth = 240;
@@ -66,6 +67,8 @@ class Navigation extends React.Component {
 
 	render() {
 		const { classes } = this.props;
+		console.log(this.props);
+		// console.log(this.props.theme);
 		const drawer = (
 			<div>
 				<div className={classes.toolbar} />
@@ -82,9 +85,9 @@ class Navigation extends React.Component {
 			<div className={classes.root}>
 				<AppBar className={classes.appBar} position="static">
 					<Toolbar className={classes.toRight}>
-						<FontAwesomeIcon icon="snowflake" size="lg" spin />
+						<FontAwesomeIcon className={styles.color} icon="snowflake" size="lg" spin />
 						<IconButton
-							color="inherit"
+							color="default"
 							aria-label="Open drawer"
 							onClick={this.handleDrawerToggle}
 							className={classes.navIconHide}
