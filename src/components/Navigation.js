@@ -25,7 +25,6 @@ const styles = (theme) => ({
 	},
 	appBar: {
 		position: 'absolute',
-		// marginLeft: drawerWidth,
 		[theme.breakpoints.up('md')]: {
 			width: '100%'
 		}
@@ -40,11 +39,15 @@ const styles = (theme) => ({
 		width: drawerWidth,
 		[theme.breakpoints.up('md')]: {
 			position: 'relative'
-		}
+		},
+		backgroundColor: '#2E3244',
+		alignItems: 'center',
+		color: '#fafbf6',
+		fontSize: 32
 	},
 	content: {
 		flexGrow: 1,
-		backgroundColor: theme.palette.background.default,
+		backgroundColor: theme.palette.primary,
 		padding: theme.spacing.unit * 3
 	},
 	toRight: {
@@ -63,12 +66,11 @@ class Navigation extends React.Component {
 
 	render() {
 		const { classes } = this.props;
-
 		const drawer = (
 			<div>
 				<div className={classes.toolbar} />
 				<Divider />
-				<List>Local Weather</List>
+				<List>Weather</List>
 				<Divider />
 				<List>About</List>
 				<Divider />
@@ -78,7 +80,7 @@ class Navigation extends React.Component {
 
 		return (
 			<div className={classes.root}>
-				<AppBar className={classes.appBar} position="static" color={classes.bgColor}>
+				<AppBar className={classes.appBar} position="static">
 					<Toolbar className={classes.toRight}>
 						<FontAwesomeIcon icon="snowflake" size="lg" spin />
 						<IconButton
