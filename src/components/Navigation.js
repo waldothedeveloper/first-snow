@@ -10,7 +10,9 @@ import Hidden from '@material-ui/core/Hidden';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classNames from 'classnames';
 
 const drawerWidth = 240;
 
@@ -66,7 +68,8 @@ class Navigation extends React.Component {
 	};
 
 	render() {
-		const { classes } = this.props;
+		const { classes, theme } = this.props;
+		const { anchor, open } = this.state;
 		console.log(this.props);
 		// console.log(this.props.theme);
 		const drawer = (
@@ -90,8 +93,9 @@ class Navigation extends React.Component {
 							color="default"
 							aria-label="Open drawer"
 							onClick={this.handleDrawerToggle}
-							className={classes.navIconHide}
+							className={classNames(classes.menuButton, open && classes.hide)}
 						>
+							{theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
 							<MenuIcon />
 						</IconButton>
 					</Toolbar>
