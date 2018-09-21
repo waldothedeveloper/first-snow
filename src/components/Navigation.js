@@ -1,25 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import IconButton from '@material-ui/core/IconButton';
-import Hidden from '@material-ui/core/Hidden';
-import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
 
 const drawerWidth = 240;
 
 const styles = (theme) => ({
 	root: {
 		flexGrow: 1,
-		height: 440,
+		height: 56,
 		zIndex: 1,
 		overflow: 'hidden',
 		position: 'relative',
@@ -59,82 +52,25 @@ const styles = (theme) => ({
 });
 
 class Navigation extends React.Component {
-	state = {
-		mobileOpen: false
-	};
-
-	handleDrawerToggle = () => {
-		this.setState((state) => ({ mobileOpen: !state.mobileOpen }));
-	};
-
 	render() {
-		const { classes, theme } = this.props;
-		const { anchor, open } = this.state;
-		console.log(this.props);
-		// console.log(this.props.theme);
-		const drawer = (
-			<div>
-				<div className={classes.toolbar} />
-				<Divider />
-				<List>Weather</List>
-				<Divider />
-				<List>About</List>
-				<Divider />
-				<List>Contact</List>
-			</div>
-		);
-
+		const { classes } = this.props;
 		return (
 			<div className={classes.root}>
 				<AppBar className={classes.appBar} position="static">
 					<Toolbar className={classes.toRight}>
 						<FontAwesomeIcon className={styles.color} icon="snowflake" size="lg" spin />
-						<IconButton
-							color="default"
-							aria-label="Open drawer"
-							onClick={this.handleDrawerToggle}
-							className={classNames(classes.menuButton, open && classes.hide)}
-						>
-							{theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+						<IconButton color="default">
 							<MenuIcon />
 						</IconButton>
 					</Toolbar>
 				</AppBar>
-				<Hidden mdUp>
-					<Drawer
-						variant="temporary"
-						anchor="right"
-						open={this.state.mobileOpen}
-						onClose={this.handleDrawerToggle}
-						classes={{
-							paper: classes.drawerPaper
-						}}
-						ModalProps={{
-							keepMounted: true // Better open performance on mobile.
-						}}
-					>
-						{drawer}
-					</Drawer>
-				</Hidden>
-				<Hidden smDown implementation="css">
-					<Drawer
-						variant="permanent"
-						open
-						classes={{
-							paper: classes.drawerPaper
-						}}
-					>
-						{drawer}
-					</Drawer>
-				</Hidden>
 			</div>
 		);
 	}
 }
 
 Navigation.propTypes = {
-	classes: PropTypes.object.isRequired,
-	theme: PropTypes.object.isRequired
+	classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(Navigation);
