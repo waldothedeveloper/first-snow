@@ -2,8 +2,9 @@ import React from 'react';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSnowflake } from '@fortawesome/free-solid-svg-icons';
-import Navigation from './components/Navigation';
+import NavBar from './components/Navigation/NavBar';
 import red from '@material-ui/core/colors/red';
+import Welcome from './components/UI/WelcomeUI';
 
 library.add(faSnowflake);
 
@@ -39,7 +40,8 @@ class App extends React.Component {
 	render() {
 		return (
 			<MuiThemeProvider theme={theme}>
-				<Navigation />
+				<NavBar />
+				<Welcome />
 			</MuiThemeProvider>
 		);
 	}
